@@ -14,10 +14,10 @@ package main
  }
 
  func main() {
-         imgfile, err := os.Open("./img.jpg")
+         imgfile, err := os.Open("./elephant.jpg")
 
          if err != nil {
-                 fmt.Println("img.jpg file not found!")
+                 fmt.Println("elephant.jpg file not found!")
                  os.Exit(1)
          }
 
@@ -51,7 +51,13 @@ package main
          for y := 0; y < height; y++ {
                  for x := 0; x < width; x++ {
                          r, g, b, a := img.At(x, y).RGBA()
-                         fmt.Printf("[X : %d Y : %v] R : %v, G : %v, B : %v, A : %v  \n", x, y, r, g, b, a)
+						 
+						 rr := uint8(r >> 8)
+						 gg := uint8(g >> 8)
+						 bb := uint8(b >> 8)
+						 aa := uint8(a >> 8)
+						 fmt.Printf("[X : %d Y : %v] R : %v, G : %v, B : %v, A : %v  \n", x, y, rr, gg, bb, aa)
+                         //fmt.Printf("[X : %d Y : %v] R : %v, G : %v, B : %v, A : %v  \n", x, y, r, g, b, a)
                  }
          }
 
